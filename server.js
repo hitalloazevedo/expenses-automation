@@ -1,6 +1,7 @@
 import Fastify from 'fastify';
 import { appendRow } from './sheets.js';
 import { configDotenv } from 'dotenv';
+import { Logger } from './logger.js';
 
 configDotenv();
 
@@ -26,25 +27,48 @@ function getTodayYYYYMMDD() {
     return `${year}-${month}-${day}`;
 }
 
+const logger = Logger();
+
 app.post('/expenses', async (request, reply) => {
 
     const token = request.headers.authorization;
 
-    if (token !== process.env.TOKEN) return reply.code(401).send({ error: 'Unauthorized' });
+    if (token !== process.env.TOKEN) {
+        logger.error('Unauthorized access attempt');
+        return reply.code(401).send({ error: 'Unauthorized' });
+    }
 
     const { category, amount, date, description } = request.body;
 
-    if (!category) return reply.code(400).send({ error: 'Category is required' });
+    if (!category) {
+        logger.error('Category is required');
+        return reply.code(400).send({ error: 'Category is required' });
+    }
 
     const categoryCode = String(category.toLowerCase().trim());
 
     const categoryName = categories.get(categoryCode, null);
 
-    if (!categoryName) return reply.code(400).send({ error: 'Invalid category' });
+    if (!categoryName) {
+        logger.error('Invalid category');
+        return reply.code(400).send({ error: 'Invalid category' });
+    }
     
-    if (amount <= 0) return reply.code(400).send({ error: 'Invalid amount' });
+    if (amount <= 0) {
+        logger.error('Invalid amount');
+        return reply.code(400).send({ error: 'Invalid amount' });
+    }
     
     await appendRow([categoryName, amount, date ? date : getTodayYYYYMMDD(), description]);
+
+    const expense = {
+        categoryName,
+        amount,
+        date,
+        description
+    };
+
+    logger.info(`New expense recorded: ${JSON.stringify(expense)}`);
 
     return reply.code(201).send({ status: 'new expense recorded' });
 });
