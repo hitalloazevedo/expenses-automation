@@ -1,0 +1,17 @@
+{
+  "name": "expenses-automation",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Hitallo Azevedo",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.4",
+    "fastify": "^5.7.4",
+    "googleapis": "^171.4.0"
+  }
+}
