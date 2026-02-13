@@ -1,7 +1,7 @@
 import { google } from 'googleapis';
 
 const auth = new google.auth.GoogleAuth({
-  keyFile: './service-account.json',
+  credentials: JSON.parse(process.env.GOOGLE_CREDENTIALS),
   scopes: ['https://www.googleapis.com/auth/spreadsheets']
 });
 
