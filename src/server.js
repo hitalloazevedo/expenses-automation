@@ -73,4 +73,8 @@ app.post('/expenses', async (request, reply) => {
     return reply.code(201).send({ status: 'new expense recorded' });
 });
 
-app.listen({ port: 80, host: '0.0.0.0' }, () => console.log('Server listening on port 80'));
+app.listen({ 
+    port: Number.parseInt(process.env.PORT, 10), 
+    host: '0.0.0.0' }, 
+    () => console.log(`Server listening on port ${process.env.PORT}`
+));
