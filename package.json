@@ -5,9 +5,9 @@
   "license": "ISC",
   "author": "Hitallo Azevedo",
   "type": "module",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node src/server.js"
   },
   "dependencies": {
     "dotenv": "^17.2.4",
