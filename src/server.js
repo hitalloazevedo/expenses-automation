@@ -8,15 +8,15 @@ configDotenv();
 const app = Fastify();
 
 const categories = new Map([
-    ['en', 'entertainment'],
-    ['sf', 'supermarket'],
-    ['ff', 'fast food'],
-    ['ch', 'charity'],
-    ['he', 'self care'],
-    ['ed', 'education'],
-    ['mt', 'motorbike maintenance'],
-    ['cl', 'clothes'],
-    ['ot', 'other']
+    ['en', 'Entertainment'],
+    ['sf', 'Supermarket'],
+    ['ff', 'Fast Food'],
+    ['ch', 'Charity'],
+    ['he', 'Self Care'],
+    ['ed', 'Education'],
+    ['mt', 'Motorbike Maintenance'],
+    ['cl', 'Clothes'],
+    ['ot', 'Other']
 ]);
 
 function getTodayYYYYMMDD() {
