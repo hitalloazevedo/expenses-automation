@@ -1,4 +1,7 @@
 import { google } from 'googleapis';
+import { configDotenv } from 'dotenv';
+
+configDotenv();
 
 const auth = new google.auth.GoogleAuth({
   credentials: JSON.parse(process.env.GOOGLE_CREDENTIALS),
