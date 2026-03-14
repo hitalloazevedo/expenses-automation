@@ -1,4 +1,4 @@
-# expenses-automation
+# expenses-sheets-api
 
 A small Node.js (Fastify) backend service that appends new expense entries to a Google Spreadsheet.
 
@@ -9,7 +9,7 @@ It exists to serve:
 ## What it does
 
 - Exposes a single endpoint: `POST /expenses`
-- Requires an auth token via the `Authorization` header
+- Requires an auth token via the `Authorization` header (**no `Bearer` prefix**)
 - Validates the payload (category + amount)
 - Appends a new row to a Google Sheet using the Google Sheets API
 
@@ -94,6 +94,8 @@ Server listening on port <PORT>
 All requests must include the header:
 
 - `Authorization: <TOKEN>`
+
+Important: **do not** use `Bearer <token>`; the server compares the header value directly to `process.env.TOKEN`.
 
 If the token is missing or invalid, the API responds with:
 
