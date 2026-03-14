@@ -175,9 +175,3 @@ curl -X POST http://localhost:3000/expenses \
     "description": "Groceries"
   }'
 ```
-
-## Notes / Improvements
-
-- Consider validating `date` format (`YYYY-MM-DD`) and `description` type/length.
-- Consider returning the normalized expense in the response (currently it returns only a status message).
-- The spreadsheet tab name and range are currently hard-coded to `expenses 2026!P:S`.
