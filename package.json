@@ -1,17 +1,27 @@
 {
-  "name": "expenses-automation",
+  "name": "expenses-api",
   "version": "1.0.0",
-  "description": "",
-  "license": "ISC",
-  "author": "Hitallo Azevedo",
+  "main": "index.js",
   "type": "module",
-  "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js"
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "build": "tsc"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
   "dependencies": {
-    "dotenv": "^17.2.4",
-    "fastify": "^5.7.4",
-    "googleapis": "^171.4.0"
+    "dotenv": "^17.3.1",
+    "fastify": "^5.8.4",
+    "pg": "^8.20.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "@types/pg": "^8.20.0",
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.1"
   }
 }
